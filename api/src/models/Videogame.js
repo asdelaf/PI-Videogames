@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.NOW,
     },
     rating: {
-      type: DataTypes.REAL,
+      type: DataTypes.DOUBLE,
     },
     image:{
       type: DataTypes.TEXT

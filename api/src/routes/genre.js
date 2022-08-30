@@ -34,17 +34,17 @@ router.post("/", async (req, res, next) => {
                     const data = api.data.results;
                     data.map((v) => {
                         v.genres.map((c) => {
-                            a = {
-                                id: c.id,
-                                name: c.name
-                            }
+                            a = c.id + '$@^' + c.name;
                             aux = aux.concat(a)
                         }) 
                     })
-                   
+                  
                     aux = Array.from(new Set(aux)); //elimina repetidos
+                
                     const genresApi = await aux.map((c) => {
-                         Genre.create({id: c.id, name: c.name})
+                        let g = c.split('$@^');
+                        Genre.create({id: g[0], name: g[1]})
+
                     });
     
                     res.json("pasaron");

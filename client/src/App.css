@@ -1,6 +1,15 @@
+body{
+  background-color:  #14237b ;/*rgb(151, 143, 143);*/
+  /*background-image: url(https://img.freepik.com/premium-vector/cute-brown-aesthetic-abstract-minimal-background-perfect-wallpaper-backdrop-postcard-background_565280-444.jpg?w=2000);
+  */  
+}
+
 .App {
   text-align: center;
 }
+
+
+
 
 .App-logo {
   height: 40vmin;

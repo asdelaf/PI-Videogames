@@ -1,0 +1,121 @@
+.grid{    
+    display: grid;   
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: 15px;
+    float: center;
+    margin-top: 50px;
+    margin-left: 25px;    
+}
+
+@media only screen and (min-width: 500px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }  
+}
+
+@media only screen and (min-width: 850px) {
+    .grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.card{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    background-color: rgb(55, 73, 175);
+    text-decoration: none;
+    border-radius: 30px;
+    width: 400px;
+    height: 500px;
+}
+
+.card:hover{
+    transform: scale(1.1);
+    transition: .4s;  
+}
+
+.card:hover .name{
+    transform: scale(1.1);
+    transition: .4s;
+}
+.box{
+    width: 400px;
+    height: 250px;
+    overflow: hidden;
+    background-position: center; 
+    background-size: cover;
+    border-radius: 30px;
+}
+
+.name{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 30px;
+    font-family: 'MV Boli';
+    margin-top: -0px;
+}
+
+.rating{
+    color: rgb(32, 55, 184);
+    font-weight: bold;
+}
+
+.ratingbox{
+    background-color: rgb(172, 183, 241);
+    width: 37px;
+    height: 27px;
+    margin-left: 15px;
+    margin-top: 5px;
+    border-radius: 20%;
+    opacity: 0.3;
+}
+
+.ratingbox:hover{
+    opacity: 1;
+}
+
+.link{
+    text-decoration: none;
+}
+
+.gridH{
+    display: grid;   
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: 15px;
+    float: center;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+@media only screen and (min-width: 500px) {
+    .gridH {
+      grid-template-columns: 1fr 1fr;
+    }  
+}
+
+@media only screen and (min-width: 850px) {
+    .gridH {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.hashtag{
+    background-color:rgb(100, 114, 192);
+    width: 80x;
+    height: 50px;
+    border-radius: 10px;
+    
+}
+
+.temperament{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-family: 'Comic Sans MS';
+    margin-right: 2px;
+    margin-left: 2px;
+    margin-top: 1px;
+}
