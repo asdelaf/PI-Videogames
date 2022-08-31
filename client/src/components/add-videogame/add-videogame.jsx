@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import { HGet } from '../../redux/actions/get/get';
+import { HGet } from '../get/get';
 import { postVideogame} from "../../redux/actions/videogames";
 import { getGenres } from '../../redux/actions/genres';
 import { useDispatch, useSelector } from 'react-redux';
@@ -149,7 +149,7 @@ const AddVideogame= () => {
 
                         <div className={s.containerText}>
                             <label className={s.labelTitle}>Description:</label>
-                            <input className={s.input} type='text' name="description" value={v.description} maxlength="1000" onChange={(e) => handleChange(e)}/>
+                            <input className={s.input} type='text' name="description" value={v.description} onChange={(e) => handleChange(e)}/>
                         </div>
 
 
