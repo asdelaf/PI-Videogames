@@ -48,6 +48,17 @@ const VideogameDetails= () => {
                                             <a className={s.title}>Rating:</a>
                                             <a className={s.dato}>{videogame.rating}</a>
                                         </div>
+
+                                        <div className={s.infoBox}>
+                                            <a className={s.title}>Platforms:</a>
+                                            {videogame.platforms ? (videogame.platforms.map((p) => {
+                                                return(
+                                                    <a className={s.platform}>{p}</a>
+                                                )
+                                            })):
+                                            <a></a>
+                                            }
+                                        </div>
                                         
                                         <div className={s.infoBox}>
                                             <a className={s.title}>Genres:</a>

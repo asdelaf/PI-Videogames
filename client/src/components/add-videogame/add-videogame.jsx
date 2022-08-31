@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import { HGet } from '../get/get';
+import { HGet } from '../../redux/actions/get/get';
 import { postVideogame} from "../../redux/actions/videogames";
 import { getGenres } from '../../redux/actions/genres';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,10 +19,29 @@ const AddVideogame= () => {
         date:'',
         rating:'',
         image: '',
-        platforms:'', 
+        platforms:[], 
         genres:[],
     })    
     
+    let platforms = [
+        "PC",
+        "Xbox Series S/X",
+        "PlayStation 4",
+        "PlayStation 3",
+        "Xbox 360",
+        "Xbox One",
+        "PlayStation 5",
+        "Nintendo Switch",
+        "Linux",
+        "macOS",
+        "Android",
+        "iOS",
+        "Xbox",
+        "PS Vita",
+        "Web"
+    ]
+
+
     useEffect(() => {
         dispatch(getGenres());
 
@@ -44,11 +63,20 @@ const AddVideogame= () => {
             [e.target.name]: e.target.value,
           };
         });
-      }
+    }
 
+    function handleChangePlatforms(e) {
+        setV(() => {
+            return {
+              ...v,
+              platforms: v.platforms.includes(e.target.value) ? v.platforms.filter((p) => p !== e.target.value) : v.platforms.concat(e.target.value),
+            };
+        });          
+    }
       
     function handleSubmit(e) {
         e.preventDefault();
+
         if(v.name ==="" || v.description ===''|| v.date ==="" || v.rating ==="" || v.platforms ==="" 
         || v.image ==="" || selectedGenres.length ===0){
             window.alert('COMPLETE TODOS LOS CAMPOS');
@@ -67,7 +95,7 @@ const AddVideogame= () => {
                             date: v.date,
                             rating: v.rating.slice(0,3),
                             image: v.image,
-                            platforms: [v.platforms],
+                            platforms: v.platforms,
                             genres: selectedGenres
                         }
             
@@ -80,7 +108,7 @@ const AddVideogame= () => {
                             date:'',
                             rating: '',
                             image:'',
-                            platforms:'',
+                            platforms:[],
                             genres:[]
                         };
 
@@ -141,9 +169,30 @@ const AddVideogame= () => {
                             <input className={s.input} type="date" name="date" min="1950-01-01" max="2030-01-01" value={v.date} onChange={(e) => handleChange(e)}/>
                         </div>
 
-                        <div className={s.containerYears}> 
+                        <div className={s.containerPlatform}> 
                             <label className={s.labelTitle}>Platforms:</label>
-                            
+                            <div className={s.platforms}>
+                                <div className={s.platformsL}>
+                                    {platforms.slice(0,platforms.length/2).map((p) => {
+                                        return(
+                                            <div>
+                                              <input type="checkbox" id={p}  value={p} onChange={(e) => handleChangePlatforms(e)} className={s.checkboxL}/>
+                                              <label for={p} className={s.labelL}>{p}</label>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                                <div className={s.platformsR}>
+                                    {platforms.slice(platforms.length/2,platforms.length).map((p) => {
+                                        return(
+                                            <div>
+                                                <input type="checkbox" id={p}  value={p} onChange={(e) => handleChangePlatforms(e)} className={s.checkboxR}/>
+                                                <label for={p} className={s.labelR}>{p}</label>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            </div>
                         </div>
 
                         <br/>
@@ -164,17 +213,12 @@ const AddVideogame= () => {
                             </div>     
                         </div>
 
-                        <div classname={s.grid} id='genres-selected'>
+                        <div className={s.grid} id='genres-selected'>
                             {selectedGenres.map((g) => {
                             return (
                                 <div className={s.hashtag} key={g}>
                                     <p className={s.genre}>{g}</p>
-                                    <input
-                                        className={s.buttonDelete}
-                                        type="button"
-                                        value="X"
-                                        onClick={()=>deleteGenre(g)}
-                                    />
+                                    <input className={s.buttonDelete} type="button" value="X" onClick={()=>deleteGenre(g)}/>
                                 </div>
                             );
                             })}

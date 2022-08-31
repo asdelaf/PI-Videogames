@@ -2,7 +2,7 @@ import React, {useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getGenres} from '../../redux/actions/genres';
 import VideogamesBoxs from '../videogames/videogames';
-import { HGet } from '../get/get';
+import { HGet } from '../../redux/actions/get/get';
 import Nav from '../nav/nav';
 import Pagination from '../pagination/pagination';
 import s from './home.module.css';
