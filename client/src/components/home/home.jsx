@@ -15,7 +15,7 @@ const Home = () => {
     const [loading, setLoading] = useState(false);
    
     const [currentPage, setCurrentPage] = useState(1);
-    const [videogamesPerPage] = useState(9)
+    const [videogamesPerPage] = useState(9);
 
     const [filter, setFilter] = useState({
         name:'',

@@ -91,8 +91,7 @@ router.get("/:id", async(req, res, next) => {
     
     try{
         if(id.length>25){
-            const videogameBD = await Videogame.findByPk(id, {include: [{model: Genre}]}) 
-            console.log(videogameBD)
+            const videogameBD = await Videogame.findByPk(id, {include: [{model: Genre}]});
             res.json(videogameBD);
             
         }else{
