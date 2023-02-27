@@ -64,22 +64,23 @@ const Home = () => {
         setFilter(newFilter)
     }
 
-    function genreChange(e) {
-        if(e.target.value === "All"){
+    const genreChange = (e) => {
+        if(e === "All"){
             setVideogames(allVideogames);            
         }else{
             let newFilter = {...filter}
-            newFilter.videogame= e.target.value;
+            newFilter.videogame= e;
             setFilter(newFilter);
     
             
             let newVideogames = allVideogames.filter((d) => {
                let aux = d.genres
-               return aux.some((t) => t.name == e.target.value)
+               return aux.some((t) => t.name == e)
             })
             setVideogames(newVideogames);
         }
-        
+
+        document.getElementById("genres").value = e
         setCurrentPage(1)
     }
     
@@ -160,7 +161,7 @@ const Home = () => {
             <div id="search" className={s.container}>
 
                 <div className={s.containerSelect}>
-                    <select name="genres" id="genres" autocomplete="nope" onChange={(e) => genreChange(e)}>
+                    <select name="genres" id="genres" autocomplete="nope" onChange={(e) => genreChange(e.target.value)}>
                         <option selected disabled>Genres:</option>
                         <option value='All'>All</option>
                         {genres && genres.length > 0 ? (genres.map((c) => {
@@ -184,7 +185,7 @@ const Home = () => {
                     </select>
                 </div>  
             </div>
-            <VideogamesBoxs videogames={currentVideogames} loading={loading} genreFilter={genreChange()}/>
+            <VideogamesBoxs videogames={currentVideogames} loading={loading} genreFilter={genreChange}/>
             <Pagination videogamesPerPage={videogamesPerPage} totalVideogames={videogames.length} paginate={paginate}/>
         </div>
     );

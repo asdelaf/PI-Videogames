@@ -32,9 +32,11 @@ const VideogamesBoxs = ({videogames, loading, genreFilter}) => {
                                 <div className={s.gridH}>
                                     {c.genres && c.genres.length ? (c.genres.map((t) => {
                                         return(
-                                            <div className={s.hashtag} onClick= {genreFilter(t)}>
+                                            <NavLink  className={s.hashtag} onClick= {() => genreFilter(t.name)}>
+                                            
                                                 <p className={s.temperament}>{t.name}</p>
-                                            </div>
+                                 
+                                            </NavLink>
                                         )
                                     })):<h2></h2>}
                                 </div>
