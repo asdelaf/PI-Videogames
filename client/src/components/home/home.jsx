@@ -184,7 +184,7 @@ const Home = () => {
                     </select>
                 </div>  
             </div>
-            <VideogamesBoxs videogames={currentVideogames} loading={loading} genreFilter={(e) => genreChange(e)}/>
+            <VideogamesBoxs videogames={currentVideogames} loading={loading} genreFilter={genreChange()}/>
             <Pagination videogamesPerPage={videogamesPerPage} totalVideogames={videogames.length} paginate={paginate}/>
         </div>
     );
