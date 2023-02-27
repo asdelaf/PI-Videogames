@@ -32,9 +32,11 @@ const VideogamesBoxs = ({videogames, loading}) => {
                                 <div className={s.gridH}>
                                     {c.genres && c.genres.length ? (c.genres.map((t) => {
                                         return(
+                                            <NavLink className={s.link} to={`/videogames/1`}>
                                             <div className={s.hashtag}>
                                                 <p className={s.temperament}>{t.name}</p>
                                             </div>
+                                            </NavLink>
                                         )
                                     })):<h2></h2>}
                                 </div>
